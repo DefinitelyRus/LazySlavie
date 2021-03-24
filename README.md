@@ -14,11 +14,11 @@
     All RNG-based applets belong in this category. All the possible options are categorized in lists stored in a module called listlist.py.
     It simply chooses a random item in a list and outputs the result. Some (like fishbowl and russianroulette) involve more code to work as intended.
 ### Games
-    There are currently no games made for this bot. Planned games are as follows:
-    - 100-level mini-RPG game
-    - Tictactoe
-    - Keep talking and nobody explodes
-    - Uno
+    > There are currently no games made for this bot. Planned games are as follows:
+    * 100-level mini-RPG game
+    * Tictactoe
+    * Keep talking and nobody explodes
+    * Uno
 
 ## Installation:
     Contact the head developer DefinitelyRus for installation instructions.
