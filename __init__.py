@@ -1,8 +1,8 @@
 import discord
 import random
-from lazySlavey import listlist
-from lazySlavey import calculator
-from lazySlavey import googleSearch
+from commandModules import listlist
+from commandModules import calculator
+from commandModules import googleSearch
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix = listlist.cmdPrefix)         #An instance of the bot called bot
@@ -15,7 +15,7 @@ async def on_ready():                           #Runs the following code when th
     await bot.change_presence(status=discord.Status.online, activity=discord.Game(randomStart()))
     print(random.choice(listlist.wokeUp))
 
-@bot.command(aliases=["pang", "peng", "pung"])
+@bot.command()
 async def ping(ctx):
     await ctx.send(f"Pong \({round(bot.latency * 1000)}ms\)")
     

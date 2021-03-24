@@ -11,7 +11,7 @@ This calculator also does not support paretheses. We will work on that some othe
 *These operations will be worked on in a different session.
 '''
 import random#,math
-from lazySlavey import listlist
+from commandModules import listlist
 
 print("Preparing Calculator Module...")
 
