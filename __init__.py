@@ -9,10 +9,6 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix = listlist.cmdPrefix)         #An instance of the bot called bot
 
-
-# def randomStart():
-#     return random.choice(listlist.startActivity)
-
 #Runs when the bot is online.
 @bot.event                                       
 async def on_ready():
@@ -23,23 +19,28 @@ async def on_ready():
 
 # -------------------------COMMANDS-------------------------
 
+#Ping
 @bot.command()
 async def ping(ctx):
+    """Returns the latency in milliseconds between the bot and the server."""
     await ctx.send(f"Pong \({round(bot.latency * 1000)}ms\)")
     
 @bot.command()
 async def yesno(ctx, *, question):
+    """Randomly responds yes, no, or maybe."""
     response = f"{question}\nAnswer: {random.choice(listlist.yesnoReplies)}"
     await ctx.send(f"Question: {response}")
     print(f"Yes or No: {response}")
 
 @bot.command(aliases=["69"])
 async def sixtyNine(ctx):
+    """Who doesn't say "Nice" when they hear "69", huh?"""
     await ctx.send("Nice.")
     print("69. Nice.")
     
 @bot.command()
 async def clear(ctx, amount=3, silent=False):
+    """Clears a specified number of messages. 3 by default."""
     await ctx.channel.purge(limit=amount)
     if silent == False:
         await ctx.send(f"Deleted {amount} messages.")
@@ -47,6 +48,7 @@ async def clear(ctx, amount=3, silent=False):
 
 @bot.command(aliases = ["calcu", "compute", "math", "calculator"])
 async def calculate(ctx, *, equation):
+    """A basic string to primitive data-type calculator."""
     try:
         await ctx.send(f"{calculator.doMath(equation,True)}")
         print(f"Calculating: {calculator.doMath(equation,False)}")
@@ -59,6 +61,8 @@ async def calculate(ctx, *, equation):
 
 @bot.command(aliases = ["c"])
 async def cal(ctx, *, equation):
+    """Also a basic string to primitive data-type calculator.
+    This one doesn't return a stupid suffix."""
     try:
         await ctx.send(f"{calculator.doMath(equation,False)}")
         print(f"Calculating: {calculator.doMath(equation,False)}")
@@ -71,6 +75,7 @@ async def cal(ctx, *, equation):
         
 @bot.command(aliases = ["google", "search", "find"])
 async def googleSrch(ctx, *,userQuery="DefinitelyRus"):
+    """Returns 8 links relating to the search query."""
     try:
         await ctx.send(googleSearch.srch(userQuery))
         print(f"Showing search results for: \"{userQuery}\".")
@@ -80,17 +85,17 @@ async def googleSrch(ctx, *,userQuery="DefinitelyRus"):
         
 @bot.command(aliases = ["echo", "print"])
 async def say(ctx, *, words = "You're gay."):
+    """Forces the bot to say words and deletes evidence."""
     await ctx.channel.purge(limit=1)
     await ctx.send(words)
     print(f"Echoing: \"{words}\"")
     
 
+#-------------------------Work in progress-------------------------
 
-
-
-#Work in progress
 @bot.command(aliases=["wrods", "wodrs", "wdros", "wdors"])
 async def jumble(ctx, *, words):
+    """Jumbles words. Still potentially readable."""
     words = jumbler.jumble(words)
     await ctx.send(words)
 
