@@ -3,17 +3,25 @@ import random
 from commandModules import listlist
 from commandModules import calculator
 from commandModules import googleSearch
+from commandModules import jumbler
+from commandModules import fishbowl
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix = listlist.cmdPrefix)         #An instance of the bot called bot
 
-def randomStart():
-    return random.choice(listlist.startActivity)
 
+# def randomStart():
+#     return random.choice(listlist.startActivity)
+
+#Runs when the bot is online.
 @bot.event                                       
-async def on_ready():                           #Runs the following code when the bot has fully loaded.
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game(randomStart()))
+async def on_ready():
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game(random.choice(listlist.startActivity)))
     print(random.choice(listlist.wokeUp))
+
+
+
+# -------------------------COMMANDS-------------------------
 
 @bot.command()
 async def ping(ctx):
@@ -76,90 +84,16 @@ async def say(ctx, *, words = "You're gay."):
     await ctx.send(words)
     print(f"Echoing: \"{words}\"")
     
-"""
-These commands work, but they need further work to be more optimized.
-
-@bot.command(aliases=["spinthewheel", "roulette", "raffle", "fishbowl"])
-async def add(ctx, *, item):
-    global itemList
-    itemList.append(item)
-    await ctx.send(f"Added {item} to the list.")
-    
-@bot.command()
-async def uchoose(ctx):
-    global itemList
-    if itemList == []:
-        await ctx.send("The list is empty. Type `slv add [item]` to add items to the list.")
-    else:
-        await ctx.send(f"I choose **{str(random.choice(itemList))}**.")
-    itemList = []
-
-@bot.command()
-async def ichoose(ctx, member, *, choice):
-    global itemList
-    if choice in itemList:
-        await ctx.send(f"{member} chose **{str(choice)}**.")
-        itemList = []
-    elif itemList == []:
-        await ctx.send("The list is empty. Type `slv add [item]` to add items to the list.")
-    else:
-        await ctx.send("This item is not in the list. (Case sensitive)")
-
-@bot.command()
-async def upick(ctx):
-    global itemList
-    choice = random.choice(itemList)
-    if itemList == []:
-        await ctx.send("The list is empty. Type `slv add [item]` to add items to the list.")
-    else:
-        await ctx.send(f"I pick **{str(random.choice(itemList))}** from the list.")
-    itemList.remove(choice)
-
-@bot.command()
-async def ipick(ctx, member, *, choice):
-    global itemList
-    if choice in itemList:
-        await ctx.send(f"{member} picked **{str(choice)}** from the list.")
-        itemList.remove(choice)
-    elif itemList == []:
-        await ctx.send("The list is empty. Type `slv add [item]` to add items to the list.")
-    else:
-        await ctx.send("This item is not in the list. (Case sensitive)")
-
-@bot.command()
-async def choicelist(ctx):
-    global itemList
-    list_in_string = ""
-    for i in itemList:
-        list_in_string += ("- " + str(i) + " \n")
-    if list_in_string == "":
-        await ctx.send("The list is empty. Type `slv add [item]` to add items to the list.")
-    else:
-        await ctx.send(f"Choice list:\n{list_in_string}")
-"""
 
 
-"""
+
+
 #Work in progress
 @bot.command(aliases=["wrods", "wodrs", "wdros", "wdors"])
 async def jumble(ctx, *, words):
-    toJumble = []
-    jumbleStc = str()
-    jumbleWord = str()
-    holdWord = str()
-    
-    for c in words:
-        if c != " ":
-            holdWord += str(c)
-        elif c == " ":
-            toJumble.append(holdWord)
-            holdWord = str()
-        print("holdWord: " + str(holdWord))
-        print("toJumble: " + str(toJumble))
-    
-    for w in toJumble:
-        for c in w:
-"""
+    words = jumbler.jumble(words)
+    await ctx.send(words)
+
 #Other prerequisites
 print(f"{random.choice(listlist.wakeupcall)} {listlist.botname}...")
 
@@ -168,6 +102,15 @@ try:
     token = open("F:\Personal Files\Project Files\Programming Projects\Git Repositories\Discord Bot\\tokens.txt", "r")
     bot.run(token.readline())
     token.close()
+    
+#     The token had to be externally stored for security purposes.
+#     Discord API uses a token to give bots instructions.
+#     We had to hide the token because if others get a hold of it,
+#     they could run their own code and grief servers hosting the bots.
+#     
+#     Other users may simply replace token.readline() with their own bot's
+#     token. This also means they'll have to remove the open() and close() functions.
+
 except Exception as e:
     print(f"Exception Caught: {e}")
     while True:
