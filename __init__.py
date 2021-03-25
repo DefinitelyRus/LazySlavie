@@ -99,11 +99,11 @@ async def jumble(ctx, *, words):
     words = jumbler.jumble(words)
     await ctx.send(words)
 
-#Other prerequisites
-print(f"{random.choice(listlist.wakeupcall)} {listlist.botname}...")
 
-#Final
+#-------------------------Start-------------------------
+
 try:
+    print(f"{random.choice(listlist.wakeupcall)} {listlist.botname}...")
     token = open("F:\Personal Files\Project Files\Programming Projects\Git Repositories\Discord Bot\\tokens.txt", "r")
     bot.run(token.readline())
     token.close()
