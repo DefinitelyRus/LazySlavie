@@ -7,6 +7,9 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix = listlist.cmdPrefix)         #An instance of the bot called bot
 
+token = open("F:\Personal Files\Project Files\Programming Projects\Git Repositories\Discord Bot\\tokens.txt", "r")
+#print(token.readline())
+
 def randomStart():
     return random.choice(listlist.startActivity)
 
@@ -165,7 +168,8 @@ print(f"{random.choice(listlist.wakeupcall)} {listlist.botname}...")
 
 #Final
 try:
-    bot.run("ODE5MTQyMDkxMDY1MTMxMDQ4.YEiThQ.kNXlKydaLM_a1E89n4BohuYKMss")
+    bot.run(token.readline())
+    token.close()
 except Exception as e:
     print(f"Exception Handled: {e}")
     while True:
