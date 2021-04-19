@@ -3,12 +3,14 @@ Created on 10 Mar 2021
 
 @author: Rus
 
-This sub-program simulates a basic calculator.
+This sub-program simulates a basic multi-operation calculator, allowing for application of PEMDAS equations.
 It takes string as input and outputs a numerical answer.
 The operations that it supports are: Addition, Subtraction, Multiplication, Division, Modulo, Factorials*, Exponents*, and Roots*.
 This calculator also does not support paretheses. We will work on that some other time.
 
 *These operations will be worked on in a different session.
+
+See https://github.com/DefinitelyRus/LazySlavie for full documentation.
 '''
 import random#,math
 from commandModules import listlist
@@ -174,7 +176,13 @@ def doMath(eqString, toRoast):
             return f"{eqString} = {output}"
     
 
-#doMath(input())                        #For testing purposes
+if __name__ == "__main__":
+    try:
+        doMath(input("Equation: "), False)
+        unusedVar = input("Waiting...")
+    except Exception as e:
+        print(f"Error encountered: {e}")
+        unusedVar = input("Waiting...")
 
 """
 Known Issues:
