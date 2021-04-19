@@ -1,4 +1,4 @@
-# Discord LazySlavey
+# Discord LazySlavie
 A multipurpose Discord bot with several features such as a string-to-PDT calculator, google search, among others. This project will use Discord.py API to function.
     
 ## Features
@@ -30,3 +30,8 @@ Simply extract the .rar file and run __init__.py.
 
 ## License: 
 This project uses GNU General Public License v3.0. See LICENSE for more information.
+
+## Trivia:
+* The "Lazy" in LazySlavie refers to our group called Lazy Buns because Rus is part of the group and he wanted to make his own Discord bot for his server and also his friends' servers. The "Slavie" refers to the European ethnic-linguistic group called "Slavs". All members of Lazy Buns pronouce it as /slave-y/ as suppose to a more proper /slav-ie/, although Rus says it should **not** be confused with slaves, even when the group insists otherwise because of their dark humor.
+* Many commands LazySlavie features are from Rus's previous projects when he didn't bother with UI. He simply repurposed the code to be usable with the bot, instead of just being an ugly console app.
+* The game Text Adventure is originally planned as a console-based test-only RPG game to be made with Kerlernder. It's still functionally the same, but it uses Discord as a medium instead of a console. It also lets multiplayer be implement much more easily.
