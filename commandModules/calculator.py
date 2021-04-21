@@ -12,7 +12,7 @@ This calculator also does not support paretheses. We will work on that some othe
 
 See https://github.com/DefinitelyRus/LazySlavie for full documentation.
 '''
-import random#,math
+import random
 from commandModules import listlist
 
 print("Preparing Calculator Module...")
