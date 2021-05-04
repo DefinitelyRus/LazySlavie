@@ -104,7 +104,7 @@ async def jumble(ctx, *, words):
 
 try:
     print(f"{random.choice(listlist.wakeupcall)} {listlist.botname}...")
-    token = open("F:\Personal Files\Project Files\Programming Projects\Git Repositories\Discord Bot\\tokens.txt", "r")
+    token = open("F:\Personal Files\Project Files\Programming Projects\Git Repositories\Discord Bot\\lazyslavie_token.txt", "r")
     bot.run(token.readline())
     token.close()
     
